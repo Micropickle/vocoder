@@ -40,6 +40,23 @@ included below are some of the larger components and external components needed,
 |1|female jack|https://shokitech.com/product/3-5-mm-audio-jack-female-trrs-smd-4-pcs/
 |1|screw headers|https://uk.farnell.com/camdenboss/ctbp0500-2/tb-wire-to-brd-2pos-16awg/dp/2668617
 |1|li polymer single cell battery|https://www.amazon.co.uk/EEMB-2000mAh-103454-Rechargeable-Connector/dp/B08214DJLJ/ref=sr_1_4?sr=8-4
+|2|100 ohm resistors|general buying section
+|2|160 ohm resistors|general buying section
+|1|140 ohm resistors|general buying section
+|1|1k ohm resistors|general buying section
+|1|110k ohm resistors|general buying section
+|1|15k ohm resistors|general buying section
+|2|100k ohm resistors|general buying section
+|2|10uF capacitors|general buying section
+|2|LED|general buying section
+|1|Schottky rectifier diode|general buying section
+|5|signal diode|general buying section
+|1|22uH inductor|general buying section
+|5|NPN bipolar junction transistors|general buying section
+
+## general buying section
+
+for common components (and components that i have listed to be apart of the general buying section) the common place to aquire these would be JLCPCB along with the board your ordering, Digikey and similar shops as they sell many common components in bulk, amazon with different resistor and capacitor kits.
 
 ## initial prototype
 it started off as a proof of concept through a prototype board using a simple XIAO esp32 c3 to test the idea and the limitations, this taught me alot digital audio, sound systems and BLE as all three are very necessary for this project
@@ -50,3 +67,4 @@ the issue was everything was powered by the 3v3 pin on the esp, i had to rely on
 ## acknowledgement
 i want to give my thanks to hackclub for helping me to make this
 link to my journal blueprint: https://blueprint.hackclub.com/projects/8772
+
