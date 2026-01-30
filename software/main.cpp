@@ -2,6 +2,7 @@
 #include <driver/i2s.h>
 #include <esp_timer.h>
 #include <string.h>
+#include <math.h>
 
 
 // ============================================================================
@@ -22,17 +23,91 @@
 // AUDIO CONFIGURATION
 // ============================================================================
 
-#define SAMPLE_RATE   20000
-#define BIT_DEPTH     16
+#define SAMPLE_RATE   16000 //8000 gives telephone quality, 16000 offers decent voice transmittion, 44100 offers cd quality music, 48000 gives overall good quality used for music, DVD playing and video
+#define BIT_DEPTH     8 // 8 bit audio gives choppy sound, 16 bit offers audio quality compared to a smartphone
+#define ADC_BIAS    2230
+#define NOISE_THRESHOLD 30
+#define BUFFER_COUNT 2
+#define BUFFER_SIZE  512 //latency increases with buffer size, 64 offers almost instant playback, 512 offers half a second delay (all dependant on buffer count)
 
-#define ADC_BIAS    2230    
+int16_t input_buffer[BUFFER_SIZE];
+int16_t output_buffer[BUFFER_SIZE];
+int buffer_pos = 0;
+// if CPU cannot keep up then audible pops can be heard, if the case then increase buffer size
 
-#define BUFFER_SIZE   32
+// an increase in buffer size decreases the frequency of CPU interruptions but increases latency and uses more memory
+// an increase in buffer count decreases glitching but also uses more memory
+
+// large buffer lengths but little buffer count = high latency
+// low buffer length but many buffers = high interrupt load
 
 // ============================================================================
-// AUDIO EFFECTS
+// AUDIO FUNCTIONS
 // ============================================================================
 
+void setup_adc() {
+  analogSetPinAttenuation(PIN_ADC_MIC, ADC_11db);
+  analogReadResolution(BIT_DEPTH);
+}
+
+void input_sample() {
+  uint16_t adc_val = analogRead(PIN_ADC_MIC);
+
+  int16_t centred_sample = (int16_t)(adc_val - ADC_BIAS);
+  if (abs(centred_sample) < NOISE_THRESHOLD) {
+    centred_sample = 0;
+  }
+  
+  input_buffer[buffer_pos] = centred_sample * 64;
+}
+
+void process_sample() {
+  int16_t processed_sample = input_buffer[buffer_pos];
+  // voice changer effects here
+  output_buffer[buffer_pos] = processed_sample;
+  buffer_pos++;
+}
+
+void output_sample() {
+  if (buffer_pos >= BUFFER_SIZE) {
+    size_t bytes_written = 0;
+    i2s_write(I2S_NUM_0, output_buffer, BUFFER_SIZE * sizeof(int16_t), &bytes_written, portMAX_DELAY);
+    buffer_pos = 0;
+  }
+}
+void accurate_delays() {
+  static uint32_t last_time = 0;
+  uint32_t current_time = esp_timer_get_time();
+  uint32_t sample_period_us = 1000000 / SAMPLE_RATE;
+
+  while ((current_time - last_time) < sample_period_us) {
+    current_time = esp_timer_get_time();
+    ets_delay_us(1);
+  }
+  last_time = current_time;
+}
+
+void audio_handler(void* parameter) {
+  while (1) {
+    input_sample();
+    process_sample();
+    output_sample();
+    accurate_delays();
+  }
+}
+
+void audio_init() {
+  setup_adc();
+
+  xTaskCreate(
+    audio_handler,
+    "audio_handler",
+    1000,
+    NULL,
+    3,
+    NULL
+  );
+}
 
 // ============================================================================
 // I2S SETUP
@@ -43,12 +118,12 @@ void setup_i2s() {
     .mode = (i2s_mode_t)(I2S_MODE_MASTER | I2S_MODE_TX),
     .sample_rate = SAMPLE_RATE,
     .bits_per_sample = I2S_BITS_PER_SAMPLE_16BIT,
-    .channel_format = I2S_CHANNEL_FMT_RIGHT_LEFT,
+    .channel_format = I2S_CHANNEL_FMT_ALL_RIGHT,
     .communication_format = I2S_COMM_FORMAT_STAND_I2S,
     .intr_alloc_flags = ESP_INTR_FLAG_LEVEL1,
-    .dma_buf_count = 8,
+    .dma_buf_count = BUFFER_COUNT,
     .dma_buf_len = BUFFER_SIZE,
-    .use_apll = false,
+    .use_apll = true,
     .tx_desc_auto_clear = true,
     .fixed_mclk = 0
   };
@@ -61,7 +136,7 @@ void setup_i2s() {
   };
   i2s_driver_install(I2S_NUM_0, &i2s_config, 0, NULL);
   i2s_set_pin(I2S_NUM_0, &pin_config);
-  i2s_set_clk(I2S_NUM_0, SAMPLE_RATE, I2S_BITS_PER_SAMPLE_16BIT, I2S_CHANNEL_STEREO);
+  i2s_set_clk(I2S_NUM_0, SAMPLE_RATE, I2S_BITS_PER_SAMPLE_16BIT, I2S_CHANNEL_MONO);
 }
 
 // ============================================================================
@@ -134,20 +209,29 @@ BLESecurity *btSecurity;
 
 #define BTNAME "vocoder"
 
+#define BT_ADV_POWER ESP_PWR_LVL_N12  // -12dBm (low power)
+#define BT_CONN_POWER ESP_PWR_LVL_P9  // +9dBm (high power when connected)
+
+
 bool deviceConnected = false;
 bool oldDeviceConnected = false;
+bool advertising = false;
 std::string input;
 
 class MyServerCallbacks : public BLEServerCallbacks {
   void onConnect(BLEServer *pServer) {
     led_buzzer(2, 50, 100, 5000);
     deviceConnected = true;
+    advertising = false;
   };
 
   void onDisconnect(BLEServer *pServer) {
     led_buzzer(1, 200, 0, 5000);
-    btServer->startAdvertising();
-    deviceConnected = false;
+    if (!advertising) {
+      btServer->startAdvertising();
+      deviceConnected = false;
+      advertising = true;
+    }
   }
 };
 
@@ -185,7 +269,12 @@ void bt_init() {
   BLEAdvertising *btAdvertising = btServer->getAdvertising();
   btAdvertising->addServiceUUID(SERVICE_TEST_UUID);
   btAdvertising->setScanResponse(true);
-  btServer->startAdvertising();
+  btAdvertising->setMinInterval(0x0064);  // 100ms in 0.625ms units
+  btAdvertising->setMaxInterval(0x00C8);  // 200ms in 0.625ms units
+  if (!advertising) {
+    btServer->startAdvertising();
+    advertising = true;
+  }
 
   return;
 }
@@ -200,6 +289,7 @@ void setup() {
   analogReadResolution(12);
   analogSetAttenuation(ADC_11db);
   setup_i2s();
+  audio_init();
 }
 
 // ============================================================================
@@ -208,31 +298,5 @@ void setup() {
 
 
 void loop() {
-  static int16_t audio_buffer[BUFFER_SIZE * 2];
-  static size_t samples_collected = 0;
-  
-  // Wait for I2S to be ready (it will tell us when it needs data)
-  size_t bytes_written = 0;
-  
-  // Only process when we have a full buffer
-  if (samples_collected < BUFFER_SIZE) {
-    // Collect samples as fast as possible
-    int raw_adc = analogRead(PIN_ADC_MIC);
-    int16_t sample = (raw_adc - ADC_BIAS) << 2;
-    
-    // Clip
-    if (sample > 32767) sample = 32767;
-    if (sample < -32768) sample = -32768;
-    
-    // Store in stereo
-    int stereo_index = samples_collected * 2;
-    audio_buffer[stereo_index] = sample;
-    audio_buffer[stereo_index + 1] = sample;
-    
-    samples_collected++;
-  } else {
-    // Send when buffer is full
-    i2s_write(I2S_NUM_0, audio_buffer, sizeof(audio_buffer), &bytes_written, portMAX_DELAY);
-    samples_collected = 0;
-  }
+  vTaskDelay(10 / portTICK_PERIOD_MS);
 }
