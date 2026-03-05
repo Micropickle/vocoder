@@ -2,7 +2,7 @@
 
 a voice amplifier for use with encumbersome masks such as gas masks
 <div style="display: flex; gap: 10px;">
-  <img width="30%" height="30%" alt="board CAD" src="photos/CAD designs/KiCad/Screenshot from 2026-01-22 20-45-53.png" />
+  <img width="30%" height="30%" alt="board CAD" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-45.png" />
   <img width="30%" height="30%" alt="prototype showcase" src="photos/prototype version/IMG_20260123_094632.jpg" />
   </div>
 
@@ -14,12 +14,12 @@ the project was first inspired by a fictonal story/world called degenesis where 
 
 ## gallery
 <div style="display: flex; gap: 1px;">
-  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-01-22 20-45-09.png">
-  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-01-23 09-53-42.png">
+  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-30.png">
+  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-13.png">
 <div/>
 <div style="display: flex; gap: 1px;">
-  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-01-22 20-45-53.png">
-  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-01-22 20-46-21.png">
+  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-45.png">
+  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-59.png">
 <div/>
 
 ## how to use
@@ -29,30 +29,7 @@ the project was first inspired by a fictonal story/world called degenesis where 
 
 ## bill of materials
 
-included below are some of the larger components and external components needed, the full BOM can be found in the production files in hardware
 
-|quantity|component|part link|
-|:------:|:-------:|:--------:|
-|1|XIAO ESP32-S3|https://thepihut.com/products/seeed-studio-xiao-esp32s3|
-|1|1x05 dip switches|https://www.digikey.co.uk/en/products/detail/cts-electrocomponents/219-5MST/223200
-|1|power slide switch|https://www.tehonline.co.uk/products/mini-slide-switch-spdt-2-54mm
-|1|buzzer|https://thepihut.com/products/buzzer-5v-breadboard-friendly
-|1|female jack|https://shokitech.com/product/3-5-mm-audio-jack-female-trrs-smd-4-pcs/
-|1|screw headers|https://uk.farnell.com/camdenboss/ctbp0500-2/tb-wire-to-brd-2pos-16awg/dp/2668617
-|1|li polymer single cell battery|https://www.amazon.co.uk/EEMB-2000mAh-103454-Rechargeable-Connector/dp/B08214DJLJ/ref=sr_1_4?sr=8-4
-|2|100 ohm resistors|general buying section
-|2|160 ohm resistors|general buying section
-|1|140 ohm resistors|general buying section
-|1|1k ohm resistors|general buying section
-|1|110k ohm resistors|general buying section
-|1|15k ohm resistors|general buying section
-|2|100k ohm resistors|general buying section
-|2|10uF capacitors|general buying section
-|2|LED|general buying section
-|1|Schottky rectifier diode|general buying section
-|5|signal diode|general buying section
-|1|22uH inductor|general buying section
-|5|NPN bipolar junction transistors|general buying section
 
 ## general buying section
 
@@ -67,4 +44,5 @@ the issue was everything was powered by the 3v3 pin on the esp, i had to rely on
 ## acknowledgement
 i want to give my thanks to hackclub for helping me to make this
 link to my journal blueprint: https://blueprint.hackclub.com/projects/8772
+
 
