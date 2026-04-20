@@ -29,6 +29,31 @@ the project was first inspired by a fictonal story/world called degenesis where 
 
 ## bill of materials
 
+| Designator         | Footprint                                                     | Quantity | Value                       | LCSC Part # |
+|:------------------:|:-------------------------------------------------------------:|:--------:|:---------------------------:|:-----------:|
+| BZ1                | PinHeader_1x02_P2.54mm_Vertical                               | 1        | Buzzer                      |             |
+| C1, C2, C4, C7, C8 | 0603                                                          | 5        | 10u                         |             |
+| C10, C11           | 0603                                                          | 2        | 0.1u                        |             |
+| C12, C13, C14      | 0603                                                          | 3        | 1u                          |             |
+| C3, C5, C6         | 0603                                                          | 3        | 100n                        |             |
+| D1, D2             | 1206                                                          | 2        | LED                         |             |
+| J1                 | Jack_3.5mm_PJ320D_Horizontal                                  | 1        | AudioJack4                  |             |
+| J2                 | PinHeader_1x02_P2.54mm_Vertical                               | 1        | Conn_01x02_Socket           |             |
+| J3                 | TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal | 1        | Conn_01x02_Pin              |             |
+| J4                 | USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal       | 1        | USB_C_Receptacle_USB2.0_16P |             |
+| Q1, Q2, Q3         | SOT-23                                                        | 3        | Q_NPN_BCE                   |             |
+| R1, R2             | 0603                                                          | 2        | 100                         |             |
+| R10, R9            | 0603                                                          | 2        | 5.1k                        |             |
+| R3, R5, R6         | 0603                                                          | 3        | 10k                         |             |
+| R4                 | 0603                                                          | 1        | 100k                        |             |
+| R7                 | 0603                                                          | 1        | 1.2k                        |             |
+| SW1                | SW_Slide-03_Wuerth-WS-SLTV_10x2.5x6.4_P2.54mm                 | 1        | SW_SPDT                     |             |
+| SW2, SW3           | SW_Push_SPST_NO_Alps_SKRK                                     | 2        | SW_Push                     |             |
+| U1                 | ESP32-S2-MINI-1                                               | 1        | ESP32-S3-MINI-1             |             |
+| U2                 | SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.3mm_ThermalVias         | 1        | TP4056-42-ESOP8             |             |
+| U3                 | SOT-23-5                                                      | 1        | TPS73633DBV                 |             |
+| U5                 | LFCSP-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm_ThermalVias             | 1        | ADAU1761                    |             |
+
 
 
 ## general buying section
@@ -44,5 +69,6 @@ the issue was everything was powered by the 3v3 pin on the esp, i had to rely on
 ## acknowledgement
 i want to give my thanks to hackclub for helping me to make this
 link to my journal blueprint: https://blueprint.hackclub.com/projects/8772
+
 
 
