@@ -4998,7 +4998,7 @@
 		(uuid "083a3389-7116-49e9-86aa-a2d1b95075e4")
 	)
 	(no_connect
-		(at 157.48 20.32)
+		(at 147.32 22.86)
 		(uuid "0aa53bde-eba1-4708-a6fb-8d6729996b36")
 	)
 	(no_connect
@@ -5695,6 +5695,28 @@
 			)
 		)
 	)
+	(global_label "USB_5V"
+		(shape input)
+		(at 86.36 143.51 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1e418bfc-900a-41fb-9b40-4ff89e45324b")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 86.36 133.4491 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "3V3_SWITCH"
 		(shape input)
 		(at 66.04 48.26 180)
@@ -6115,22 +6137,22 @@
 	)
 	(global_label "SWITCH_INPUT"
 		(shape input)
-		(at 147.32 22.86 180)
+		(at 157.48 20.32 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify left)
 		)
 		(uuid "742d2f89-398b-44b7-9282-efc85d7b936c")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 131.03 22.86 0)
+			(at 173.77 20.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -6219,6 +6241,28 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "3V3_PRE"
+		(shape input)
+		(at 105.41 143.51 90)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "88a135a4-f922-4056-a5da-76a28881b17f")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 105.41 132.3606 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 				(hide yes)
 			)
 		)
@@ -7751,6 +7795,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R")
+		(at 86.36 147.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "48998521-d80b-4b51-b90f-ce7aa0c613cd")
+		(property "Reference" "R8"
+			(at 88.9 146.0499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "220"
+			(at 88.9 148.5899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 84.582 147.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 86.36 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 86.36 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "bf04cdb3-e574-475b-ae6a-1a1cb5e56c8d")
+		)
+		(pin "1"
+			(uuid "6799241c-8e83-470a-9e22-41f3560793a3")
+		)
+		(instances
+			(project ""
+				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
+					(reference "R8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Regulator_Linear:TPS73633DBV")
 		(at 234.95 129.54 0)
 		(unit 1)
@@ -8231,7 +8345,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 99.06 101.6 0)
 			(effects
 				(font
@@ -8352,6 +8466,72 @@
 			(project "vocoder"
 				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
 					(reference "#PWR04")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 105.41 158.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6569ee6a-d774-4f5d-9077-42c01b8d78ad")
+		(property "Reference" "#PWR025"
+			(at 105.41 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 105.41 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 105.41 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 105.41 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 105.41 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "3e3e5583-4cf7-4d07-b624-bd54520264ea")
+		)
+		(instances
+			(project "vocoder"
+				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
+					(reference "#PWR025")
 					(unit 1)
 				)
 			)
@@ -8921,6 +9101,76 @@
 			(project "vocoder"
 				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
 					(reference "R3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:R")
+		(at 105.41 147.32 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7f673557-c75a-4e1a-a197-f7e3d0e232ef")
+		(property "Reference" "R11"
+			(at 107.95 146.0499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100"
+			(at 107.95 148.5899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"
+			(at 103.632 147.32 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 105.41 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Resistor"
+			(at 105.41 147.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4fa5e4c0-efed-4bb0-b585-33a06106ae59")
+		)
+		(pin "1"
+			(uuid "2ab109dc-eb11-4ee8-a9ae-42ed54d69899")
+		)
+		(instances
+			(project "vocoder"
+				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
+					(reference "R11")
 					(unit 1)
 				)
 			)
@@ -10535,7 +10785,7 @@
 				)
 			)
 		)
-		(property "Footprint" "LED_SMD:LED_1206_3216Metric_Pad1.42x1.75mm_HandSolder"
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
 			(at 83.82 101.6 0)
 			(effects
 				(font
@@ -10590,6 +10840,85 @@
 			(project "vocoder"
 				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
 					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 105.41 154.94 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d7c22083-f3cf-49ef-a448-560a40c505b9")
+		(property "Reference" "D4"
+			(at 109.22 155.2574 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED GREEN"
+			(at 109.22 157.7974 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
+			(at 105.41 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 105.41 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 105.41 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 105.41 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "adce1645-1950-4ef9-bf71-201b7242bf98")
+		)
+		(pin "1"
+			(uuid "d18a0e42-6314-4944-8af3-4cf8d7835bde")
+		)
+		(instances
+			(project "vocoder"
+				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
+					(reference "D4")
 					(unit 1)
 				)
 			)
@@ -10982,6 +11311,151 @@
 			(project "vocoder"
 				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
 					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 86.36 154.94 90)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e98660c3-8516-4095-9df7-224b2f5878f4")
+		(property "Reference" "D3"
+			(at 90.17 155.2574 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "LED BLUE"
+			(at 90.17 157.7974 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "LED_SMD:LED_0603_1608Metric"
+			(at 86.36 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 86.36 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 86.36 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Sim.Pins" "1=K 2=A"
+			(at 86.36 154.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "10c0e462-ae59-4822-aad7-80de7fbe8e16")
+		)
+		(pin "1"
+			(uuid "3b13f2ba-6017-4acb-9b22-07a3d8a78dc8")
+		)
+		(instances
+			(project ""
+				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 86.36 158.75 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f11ad131-61ec-47d3-80b6-4e4686ec71f9")
+		(property "Reference" "#PWR022"
+			(at 86.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 86.36 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 86.36 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 86.36 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 86.36 158.75 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "aabe3c1f-53a1-4494-8a9c-16d9a58da516")
+		)
+		(instances
+			(project ""
+				(path "/7de3f35b-decd-4640-a52b-3927e17e35d2"
+					(reference "#PWR022")
 					(unit 1)
 				)
 			)
