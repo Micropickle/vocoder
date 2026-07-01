@@ -11,10 +11,10 @@ the project was first inspired by a fictonal story/world called degenesis where 
 ## gallery
 
 CAD designs
-photos/CAD designs/KiCad
+'photos/CAD designs/KiCad'
 
 initial prototype photos
-photos/prototype version
+'photos/prototype version'
 
 ## how to use
 1. plug in mic of your choice (the standard is the audio jack port found in phones, but the board can be modified for different ports) and wire in an external speaker that meets the specifications of the amplifier chip
@@ -23,7 +23,7 @@ photos/prototype version
 
 ## bill of materials
 
-hardware/production/bom.csv
+'hardware/production/bom.csv'
 
 ## initial prototype
 it started off as a proof of concept through a prototype board using a simple XIAO esp32 c3 to test the idea and the limitations, this taught me alot digital audio, sound systems and BLE as all three are very necessary for this project
