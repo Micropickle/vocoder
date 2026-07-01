@@ -1,74 +1,44 @@
 # THE VOCODER
 
 a voice amplifier for use with encumbersome masks such as gas masks
-<div style="display: flex; gap: 10px;">
-  <img width="30%" height="30%" alt="board CAD" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-45.png" />
-  <img width="30%" height="30%" alt="prototype showcase" src="photos/prototype version/IMG_20260123_094632.jpg" />
-  </div>
 
 ## breif description
 the vocoder is a device that allows you to alter your voice to your specifications and allows you to amplify it through speakers and bone transducer speakers and is especially useful in situations where wearing a mask can muffle your voice.
 
 ## inspiration
-the project was first inspired by a fictonal story/world called degenesis where people called chroniclers disguised their voices using vocoders, long tubes went down their throats to gather their voice and was fed into the 'vocoder' which then was distorted and was amplifiable. along with that i own masks and gasmasks that make it hard to communicate with others so the device is meant to gather your voice via a mic or throat mic and output it via speakers or bone transducer speakers placed on the mask itself which is very useful for hobbies such as airsofting.
+the project was first inspired by a fictonal story/world called degenesis where people called chroniclers disguised their voices using vocoders, long tubes went down their throats to gather their voice and was fed into the 'vocoder' which then was distorted and was amplifiable. along with that i own masks and gasmasks that make it hard to communicate with others so the device is meant to gather your voice via a mic or throat mic and output it via speakers or bone transducer speakers placed on the mask itself which is very useful for hobbies such as airsofting or cosplaying. the device also has professional use cases such as when having to wear heavy clothing and gasmasks such as PPE, this device will make you clearly audible to others when working
 
 ## gallery
-<div style="display: flex; gap: 1px;">
-  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-30.png">
-  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-13.png">
-<div/>
-<div style="display: flex; gap: 1px;">
-  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-45.png">
-  <img width="45%" height="45%" src="photos/CAD designs/KiCad/Screenshot from 2026-03-05 19-23-59.png">
-<div/>
+
+CAD designs
+photos/CAD designs/KiCad
+
+initial prototype photos
+photos/prototype version
 
 ## how to use
-1. plug in mic of your choice (the standard is the audio jack port found in phones, but the board can be modified for different ports)
+1. plug in mic of your choice (the standard is the audio jack port found in phones, but the board can be modified for different ports) and wire in an external speaker that meets the specifications of the amplifier chip
 2. compile the project on Platformio and flash to the board (this is necessary as in the future i will implement configurations for BLE and initial settings for audio modification such as amplification, distortion, pitch changing, etc.)
 3. wire in audio output of your choosing
 
 ## bill of materials
 
-| Designator         | Footprint                                                     | Quantity | Value                       | LCSC Part # |
-|:------------------:|:-------------------------------------------------------------:|:--------:|:---------------------------:|:-----------:|
-| BZ1                | PinHeader_1x02_P2.54mm_Vertical                               | 1        | Buzzer                      |             |
-| C1, C2, C4, C7, C8 | 0603                                                          | 5        | 10u                         |             |
-| C10, C11           | 0603                                                          | 2        | 0.1u                        |             |
-| C12, C13, C14      | 0603                                                          | 3        | 1u                          |             |
-| C3, C5, C6         | 0603                                                          | 3        | 100n                        |             |
-| D1, D2             | 1206                                                          | 2        | LED                         |             |
-| J1                 | Jack_3.5mm_PJ320D_Horizontal                                  | 1        | AudioJack4                  |             |
-| J2                 | PinHeader_1x02_P2.54mm_Vertical                               | 1        | Conn_01x02_Socket           |             |
-| J3                 | TerminalBlock_Phoenix_MKDS-1,5-2-5.08_1x02_P5.08mm_Horizontal | 1        | Conn_01x02_Pin              |             |
-| J4                 | USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal       | 1        | USB_C_Receptacle_USB2.0_16P |             |
-| Q1, Q2, Q3         | SOT-23                                                        | 3        | Q_NPN_BCE                   |             |
-| R1, R2             | 0603                                                          | 2        | 100                         |             |
-| R10, R9            | 0603                                                          | 2        | 5.1k                        |             |
-| R3, R5, R6         | 0603                                                          | 3        | 10k                         |             |
-| R4                 | 0603                                                          | 1        | 100k                        |             |
-| R7                 | 0603                                                          | 1        | 1.2k                        |             |
-| SW1                | SW_Slide-03_Wuerth-WS-SLTV_10x2.5x6.4_P2.54mm                 | 1        | SW_SPDT                     |             |
-| SW2, SW3           | SW_Push_SPST_NO_Alps_SKRK                                     | 2        | SW_Push                     |             |
-| U1                 | ESP32-S2-MINI-1                                               | 1        | ESP32-S3-MINI-1             |             |
-| U2                 | SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.41x3.3mm_ThermalVias         | 1        | TP4056-42-ESOP8             |             |
-| U3                 | SOT-23-5                                                      | 1        | TPS73633DBV                 |             |
-| U5                 | LFCSP-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm_ThermalVias             | 1        | ADAU1761                    |             |
-
-
-
-## general buying section
-
-for common components (and components that i have listed to be apart of the general buying section) the common place to aquire these would be JLCPCB along with the board your ordering, Digikey and similar shops as they sell many common components in bulk, amazon with different resistor and capacitor kits.
+hardware/production/bom.csv
 
 ## initial prototype
 it started off as a proof of concept through a prototype board using a simple XIAO esp32 c3 to test the idea and the limitations, this taught me alot digital audio, sound systems and BLE as all three are very necessary for this project
 <img width="30%" height="30%" alt="prototype board" src="photos/prototype version/IMG_20260123_094607.jpg" />
 
-the issue was everything was powered by the 3v3 pin on the esp, i had to rely on an external amplifier (and external power supply) to make it work and the esp's clock speed was slow. 
+the issue was everything was powered by the 3v3 pin on the esp, i had to rely on an external amplifier (and external power supply) to make it work, furthermore the esp's clock speed was too slow and brought about glitches in the audio output. 
 
-## acknowledgement
-i want to give my thanks to hackclub for helping me to make this
-link to my journal blueprint: https://blueprint.hackclub.com/projects/8772
+## description
+the circuit board went through many design stages primarily due to three things, errors, expense and having to include extra components to make the circuit work properly.
+
+the main parts of the circuit are as followed
+* the esp32-s3 board was chosen for its high clockspeed, familiarity and extensive functionality, the esp32-s3 WROOM board had included wifi, bluetooth, BLE and usb pins reducing external circuits needed and opening up options in terms of customisation
+* the ADAU1761 is a codec that includes a ADC, DAC and built in processor to make changes to the incoming and outcoming audio, this was chosen due to its specialty in audio processing which will reduce the processing power from the esp32 and its ease of programming due to the manufacturers having dedicated graphical software for the chip, the only problem is custom drivers need to be written for the esp32 to upload the code for the ADAU1761
+* the MAX98357A was chosen due to its bilt in i2s interfacw which is compatable with the esp32 and the adau1761 as both can be interfaced with the i2s bus, an amplifier was included so that the audio output can be directed to a speaker or bone transucer without an external amplifier or power supply 
+
 
 
 
