@@ -480,7 +480,7 @@
       "no_connect_dangling": "warning",
       "pin_not_connected": "error",
       "pin_not_driven": "error",
-      "pin_to_pin": "error",
+      "pin_to_pin": "warning",
       "power_pin_not_driven": "error",
       "same_local_global_label": "warning",
       "similar_label_and_power": "warning",
@@ -559,14 +559,6 @@
       {
         "netclass": "POWER",
         "pattern": "BATT+"
-      },
-      {
-        "netclass": "POWER",
-        "pattern": "AMP_POWER"
-      },
-      {
-        "netclass": "POWER",
-        "pattern": "USB_5V"
       }
     ]
   },
@@ -688,12 +680,6 @@
           "label": "Sim.Library",
           "name": "Sim.Library",
           "show": false
-        },
-        {
-          "group_by": false,
-          "label": "Field5",
-          "name": "Field5",
-          "show": false
         }
       ],
       "filter_string": "",
@@ -760,7 +746,7 @@
         "uuid": "7de3f35b-decd-4640-a52b-3927e17e35d2"
       }
     ],
-    "used_designators": "SW1,SW4,#PWR2-7,#PWR11-18,#PWR21-26,LS1,U1-4,D1-7,C1-8,J1,J3,J5,R1-4,R7-8,R11,R13-14,R16-17,R21-23",
+    "used_designators": "",
     "variants": []
   },
   "sheets": [
