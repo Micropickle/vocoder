@@ -760,7 +760,7 @@
         "uuid": "7de3f35b-decd-4640-a52b-3927e17e35d2"
       }
     ],
-    "used_designators": "SW1,SW4,#PWR2-7,#PWR11-18,#PWR21-26,LS1,U1-4,D1-7,C1-8,J1,J3,J5,R1-4,R7-8,R11,R13-14,R16-17,R21-23",
+    "used_designators": "H1,SW1,SW4,#PWR2-7,#PWR10-18,#PWR21-26,LS1,U1-4,D1-7,C1-8,J1,J3,J5,R1-4,R7-8,R11,R13-17,R21-23",
     "variants": []
   },
   "sheets": [
